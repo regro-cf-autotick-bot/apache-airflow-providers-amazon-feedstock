@@ -1,6 +1,6 @@
 context:
   name: apache-airflow-providers-amazon
-  version: "9.23.0"
+  version: "9.36.0"
   latest_airflow: 3.1.8
 
 recipe:
@@ -9,7 +9,7 @@ recipe:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/apache_airflow_providers_amazon-${{ version }}.tar.gz
-  sha256: 21166c9b0160ce21af0ef380443fa10d73893accdb8b8052ded3d9a37fd50881
+  sha256: 0151d8542d66be83639063bd74376c4a49ecba17e553726e585bb5cb2e5bdc6d
 
 build:
   noarch: python
