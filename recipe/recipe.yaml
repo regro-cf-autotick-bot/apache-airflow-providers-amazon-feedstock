@@ -25,11 +25,11 @@ outputs:
       host:
         - python ${{ python_min }}.*
         - pip
-        - flit-core ==3.12.0
+        - flit-core ==4.0.2
       run:
         - python >=${{ python_min }}
         - apache-airflow >=2.11.0
-        - apache-airflow-providers-common-compat >=1.13.0
+        - apache-airflow-providers-common-compat >=1.18.0
         - apache-airflow-providers-common-sql >=1.32.0
         - apache-airflow-providers-http
         - boto3 >=1.41.0
@@ -37,15 +37,13 @@ outputs:
         - inflection >=0.5.1
         - watchtower >=3.3.1,<4
         - jsonpath-ng >=1.5.3
-        - redshift_connector >=2.1.3
-        - asgiref >=2.3.0
+        # tightest of upstream's floors (python >=3.14)
+        - redshift_connector >=2.1.13
+        # tightest of upstream's floors (python >=3.14)
+        - asgiref >=3.11.1
         - pyathena >=3.10.0
         - jmespath >=0.7.0
-        - sagemaker-studio >=1.0.9
-        # more restrictive for python >=3.13
-        - pydynamodb >=0.7.5
-        # more restrictive for python >=3.13
-        - sqlean.py >=3.47.0
+        - sagemaker-studio >=1.0.25,<1.1.0
         - marshmallow >=3
 
         # temproary constraints to avoid pip check problems
@@ -71,9 +69,7 @@ outputs:
       run:
         - python >=${{ python_min }}
         - ${{ pin_subpackage(name, exact=True) }}
-        - aiobotocore >=2.26.0
-        # start aiobotocore[boto3]
-        # end aiobotocore[boto3]
+        - aiobotocore >=3.0.0
     tests:
       - requirements:
           run:
@@ -327,10 +323,8 @@ outputs:
       run:
         - python >=${{ python_min }}
         - ${{ pin_subpackage(name, exact=True) }}
-        # conditional for python <3.13
-        - pandas >=2.1.2
-        # conditional for python >=3.13
-        - pandas >=2.2.3
+        # tightest of upstream's floors (python >=3.14)
+        - pandas >=2.3.3
     tests:
       - requirements:
           run:
@@ -351,9 +345,11 @@ outputs:
       run:
         - python >=${{ python_min }}
         - ${{ pin_subpackage(name, exact=True) }}
-        # conditional for python <3.13
+        # tightest of upstream's floors (python <3.13)
         - python3-saml >=1.16.0
+        # tightest of upstream's floors (python <3.13)
         - xmlsec >=1.3.14
+        # tightest of upstream's floors (python <3.13)
         - lxml >=6.0.0
     tests:
       - requirements:
